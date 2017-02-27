@@ -11,10 +11,13 @@ namespace SimpleHttpServer
         public HttpServer(int port, IEnumerable<Route> routes)
         {
             this.Port = port;
+            this.Routes = routes;
             this.IsActive = true;
             this.Sessions = new Dictionary<string, HttpSession>();
             this.Processor = new HttpProcessor(routes, Sessions);
         }
+        
+        public IEnumerable<Route> Routes { get; set; }
         public IDictionary<string, HttpSession> Sessions { get; set; }
         public TcpListener Listener { get; private set; }
         public int Port { get; private set; }
@@ -28,10 +31,10 @@ namespace SimpleHttpServer
             this.Listener.Start();
             while (this.IsActive)
             {
-                TcpClient client = this.Listener.AcceptTcpClient();
+                 TcpClient client = this.Listener.AcceptTcpClient();
                 Thread thread = new Thread(() =>
                 {
-                    this.Processor.HandleClient(client);
+                    new HttpProcessor(Routes, new Dictionary<string, HttpSession>()).HandleClient(client);
                 });
                 thread.Start();
                 Thread.Sleep(1);

@@ -2,25 +2,28 @@
 using System.Runtime.InteropServices;
 using PizzaMore.Models;
 using PizzaMoreApp.BindingModels;
+using PizzaMoreApp.Data;
 using SimpleHttpServer.Models;
 
 namespace PizzaMoreApp.Service
 {
     public class LoginService :Service
     {
-        public LoginService(): base()
-        {
+        //public LoginService(): base()
+        //{
             
-        }
+        //}
         public bool LoginUser(UserBindingModel model, HttpSession session)
         {
+
+            var contex = new PizzaMoreContex();
             var user = contex.Users.FirstOrDefault(x => x.Email == model.Email && x.Password == model.Password);
             if (user != null)
             {
                 var sessio = new Session();
                 sessio.SessionId = session.Id;
                 sessio.IsActive =true;
-                sessio.User = user;
+                //sessio.User = user;
 
                 contex.Sessions.Add(sessio);
                 contex.SaveChanges();

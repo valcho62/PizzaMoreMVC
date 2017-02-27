@@ -57,6 +57,7 @@
     <Compile Include="AppStart.cs" />
     <Compile Include="BindingModels\UserBindingModel.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\MenuController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Data\Interfaces\IRepository.cs" />
     <Compile Include="Data\Interfaces\IUnitOfWorks.cs" />
@@ -68,11 +69,16 @@
     <Compile Include="Models\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RouteTable.cs" />
+    <Compile Include="Security\SignInManager.cs" />
     <Compile Include="Service\AddUserService.cs" />
     <Compile Include="Service\LoginService.cs" />
     <Compile Include="Service\Service.cs" />
+    <Compile Include="ViewModels\PizzaSugestionViewModel.cs" />
     <Compile Include="ViewModels\UserViewModel.cs" />
+    <Compile Include="Views\Home\Homelog.cs" />
     <Compile Include="Views\Home\Index.cs" />
+    <Compile Include="Views\Menu\Index.cs" />
+    <Compile Include="Views\User\Logout.cs" />
     <Compile Include="Views\User\SignIn.cs" />
     <Compile Include="Views\User\Signup.cs" />
   </ItemGroup>
