@@ -10,7 +10,7 @@ using SimpleMVC.Interfaces.Generic;
 
 namespace PizzaMoreApp.Views.Menu
 {
-    public class Index : IRenderable<PizzaSugestionViewModel>
+    public class Suggestions : IRenderable<PizzaSugestionViewModel>
     {
         public string Render()
         {
@@ -31,7 +31,7 @@ namespace PizzaMoreApp.Views.Menu
                 $"<p class=\"navbar-text navbar-right\">Signed in as {this.Model.Email}</p>" +
                 "</ul> </div></div></nav>");
 
-            htmlContent.AppendLine(File.ReadAllText("../../content/menu-top.html"));
+            htmlContent.AppendLine(File.ReadAllText("../../content/yoursuggestions-top.html"));
             htmlContent.AppendLine("<div class=\"card-deck\">");
             foreach (var pizza in this.Model.UserSugestions)
             {
@@ -51,7 +51,7 @@ namespace PizzaMoreApp.Views.Menu
             }
             htmlContent.AppendLine("</div>");
 
-            htmlContent.AppendLine(File.ReadAllText("../../content/menu-bottom.html"));
+            htmlContent.AppendLine(File.ReadAllText("../../content/yoursuggestions-bottom.html"));
 
             return htmlContent.ToString();
         }
@@ -59,3 +59,4 @@ namespace PizzaMoreApp.Views.Menu
         public PizzaSugestionViewModel Model { get; set; }
     }
 }
+

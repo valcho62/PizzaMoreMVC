@@ -26,7 +26,7 @@ namespace PizzaMoreApp.Security
            this.contex.SaveChanges();
 
            var session = SessionCreator.Create();
-            var sessionCookie = new Cookie("sessionId",session.Id + "HttpOnly; path=/");
+            var sessionCookie = new Cookie("sessionId", session.Id + "; HttpOnly; path=/");
             response.Header.AddCookie(sessionCookie);
        }
    }
